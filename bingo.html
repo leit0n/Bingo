@@ -1,0 +1,26 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Bingo</title>
+</head>
+<body>
+    <h1>Jogo do Bingo</h1>
+    <button onclick="startGame()">Começar</button>
+    <div id="bingoBoard"></div>
+
+    <script>
+        function startGame() {
+            // Call the C++ function to generate the bingo board
+            const bingoBoard = Module.cwrap('generateBingoBoard', 'string')();
+            
+            // Display the bingo board on the webpage
+            document.getElementById('bingoBoard').innerHTML = bingoBoard;
+        }
+    </script>
+
+    <script async src="bingo.js"></script>
+</body>
+</html>
